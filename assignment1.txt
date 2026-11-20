@@ -1,0 +1,191 @@
+
+ASSIGNMENT 01 
+
+1. What is a List?
+
+A list is an ordered and mutable collection in Python. It can store multiple items, including items of different data types. Lists allow duplicate values and use zero-based indexing.
+
+Example:
+    numbers = [10, 20, 30, 20]
+    mixed = [10, "Python", 3.5, True]
+
+The first element is accessed using numbers[0]. Since lists are mutable, elements can be added, removed, or changed after the list is created. Lists are written using square brackets [].
+
+
+2. What is a Tuple?
+
+A tuple is an ordered collection of elements that cannot be changed after it is created. In other words, a tuple is immutable. It can contain duplicate values and elements of different data types.
+
+Example:
+    details = (101, "Souvik", 85.5)
+
+Tuples are generally written using parentheses (). A single-element tuple must include a trailing comma, for example: (10,).
+
+
+3. What is the difference between List and Tuple?
+
+List:
+- Mutable: elements can be added, removed, or modified.
+- Usually written using square brackets, for example [1, 2, 3].
+- Provides methods such as append(), extend(), and remove().
+- Suitable when a collection needs to change.
+
+Tuple:
+- Immutable: elements cannot be added, removed, or modified after creation.
+- Usually written using parentheses, for example (1, 2, 3).
+- Has fewer modification-related methods because its contents cannot be changed.
+- Suitable for fixed collections of values.
+
+Both are ordered, support indexing and slicing, and can contain duplicate or mixed-type elements.
+
+
+11. What are the ways to find the length of a list?
+
+The usual and recommended way is the built-in len() function:
+    len(my_list)
+
+It returns the total number of elements in the list. The length can also be counted manually by iterating through the list and increasing a counter once for each element. The len() function is simpler and more efficient for normal use.
+
+
+
+
+20. WWhat’s The Difference Between The Python append() and extend() Methods?
+
+append() adds its argument as one single element at the end of a list. If the argument is another list, that entire list becomes a nested element.
+
+Example:
+    a = [1, 2]
+    a.append([3, 4])
+    # Result: [1, 2, [3, 4]]
+
+extend() iterates over the supplied iterable and adds each of its elements individually.
+
+Example:
+    b = [1, 2]
+    b.extend([3, 4])
+    # Result: [1, 2, 3, 4]
+
+Therefore, append() adds one object, whereas extend() adds the contents of an iterable.
+
+
+26. How to flatten a list in Python?
+
+Flattening means converting a nested list into a single-level list. For a list containing one level of nested lists, a nested list comprehension can be used:
+    nested = [[1, 2], [3, 4], [5]]
+    flat = [item for sublist in nested for item in sublist]
+    # Result: [1, 2, 3, 4, 5]
+
+The same result can be produced using two loops and append(). This example flattens one level; a deeply nested list requires a recursive approach or another method that handles arbitrary nesting.
+
+
+
+
+For descending order, use < instead of >. Bubble sort is easy to understand, though it is not efficient for large lists. Its average and worst-case time complexity is O(n^2).
+
+
+28. How to sort a tuple?
+
+Tuples are immutable, so their elements cannot be rearranged in place. The sorted() function returns a new sorted list. Convert that result back to a tuple when a tuple is required.
+
+Example:
+    values = (30, 10, 20)
+    sorted_values = tuple(sorted(values))
+    # Result: (10, 20, 30)
+
+For descending order:
+    tuple(sorted(values, reverse=True))
+
+
+30. What is the difference between del and clear?
+
+del is a Python statement that can delete a variable, a particular item, or a slice. For example, del items[1] removes the element at index 1, while del items removes the variable name itself.
+
+clear() is a list or dictionary method that removes all items from the existing collection but keeps the collection object available. For example, items.clear() leaves items as an empty list.
+
+Main difference: del can remove a name or selected elements; clear() empties the entire collection without deleting its variable.
+
+
+31. What is the difference between remove and pop?
+
+remove(value) searches for the given value and removes its first occurrence. It returns None. It raises ValueError if the value is not present.
+
+pop(index) removes and returns the element at the specified index. If no index is provided, it removes and returns the last element. It raises IndexError if the list is empty or the supplied index is invalid.
+
+Example:
+    items = [10, 20, 30, 20]
+    items.remove(20)  # Removes the first 20.
+    removed = items.pop(1)  # Removes and returns the item at index 1.
+
+
+32. What is the difference between indexing and slicing?
+
+Indexing accesses one element at a particular position. For example, items[2] returns the element at index 2.
+
+Slicing accesses a range of elements and returns a new sequence. Its general form is sequence[start:stop:step]. The start index is included, while the stop index is excluded.
+
+Example:
+    items = [10, 20, 30, 40, 50]
+    items[2]     # 30
+    items[1:4]   # [20, 30, 40]
+
+Indexing usually returns one item; slicing returns a sequence containing zero or more items.
+
+
+33. What is the difference between sort  and sorted ?
+
+sort() is a list method. It changes the original list in place and returns None. It can only be called on a list.
+
+sorted() is a built-in function. It accepts any iterable and returns a new sorted list, leaving the original iterable unchanged.
+
+Example:
+    numbers = [3, 1, 2]
+    numbers.sort()          # numbers becomes [1, 2, 3]
+    result = sorted((4, 2, 3))  # result is [2, 3, 4]; the tuple is unchanged.
+
+Both support reverse=True and a key function for custom sorting.
+
+
+34. What is the difference between reverse and reversed function?
+
+reverse() is a list method that reverses the elements of the original list in place. It returns None.
+
+reversed() is a built-in function that returns an iterator which provides the elements in reverse order. It does not modify the original sequence.
+
+Example:
+    numbers = [1, 2, 3]
+    numbers.reverse()             # numbers becomes [3, 2, 1]
+
+    values = [1, 2, 3]
+    result = list(reversed(values))  # result is [3, 2, 1]; values is unchanged.
+
+
+35. What is the difference between copy and deep copy?
+
+A shallow copy creates a new outer collection but does not recursively copy nested objects. The original and copied collections therefore refer to the same nested objects. Changes to a nested mutable object may be visible through both collections.
+
+A deep copy recursively copies nested objects as well. Changes to nested mutable objects in the copy do not affect the corresponding objects in the original.
+
+A shallow copy can be made with list.copy() or copy.copy(). A deep copy can be made with copy.deepcopy() from the copy module.
+
+
+36. How to check whether a list is empty?
+
+The most Pythonic way is to test the list directly:
+    if not my_list:
+        print("The list is empty")
+
+An empty list is considered False in a Boolean context, while a non-empty list is considered True. Another option is len(my_list) == 0. Do not confuse an empty list [] with None; they are different values.
+
+
+37. How to concatenate two lists? 
+
+
+The + operator creates a new list containing the elements of both lists:
+    combined = list1 + list2
+
+The extend() method adds the elements of the second list to the first list in place:
+    list1.extend(list2)
+
+Both approaches preserve the order of elements. The + operator leaves the original lists unchanged, whereas extend() modifies the first list.
+
+
